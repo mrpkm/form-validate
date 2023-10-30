@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 let confirmbtn = document.getElementById('confirm');
 let formcontainer = document.querySelector('.form-container');
 let popups = document.querySelector('.popup');
@@ -14,15 +23,6 @@ confirmbtn.addEventListener('click', (e) => {
 });
 
 
-// toggle
-var boxes = document.querySelector(".toggle-button");
-var circle = document.querySelector("button-container");
-var tenure = document.querySelector('.tenure')
-boxes.addEventListener('click', function () {
-    circle.classList.toggle("circles");
-    hero
-
-})
 
 
 // validaton form 
@@ -49,3 +49,5 @@ function validateForm(event) {
     // Clear any previous error messages
     errorText.textContent = '';
 }
+
+
