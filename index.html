@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-            <form class="right" onsubmit="validateForm(event)">
+            <form class="right" onsubmit="formSubmit(event)">
                 <div class="form-container">
                     <div class="title-container">
                         <div class="title">
@@ -71,28 +71,31 @@
                     </div>
 
                     <div class="name flex">
-                        <label for="" class="input-title">Name</label>
-                        <input class="inuput-style" type="text" placeholder="e.g. Stephen King" id="name">
-                        <span id="errorText" style="color: red; text-align:right;"></span>
+                        <div class="error-and-title">
+                            <label for="name" class="input-title">Name</label>
+                            <div class="name-error error">This field is required</div>
+                        </div>
+                        <input class="inuput-style" type="text" id="name" placeholder="e.g. Stephen King">
                     </div>
                     <div class="email flex">
-                        <label for="" class="input-title">Email Address</label>
-                        <input class="inuput-style" id="emailInput" type="text" placeholder="e.g. stephenking@lorem.com"
-                            id="email">
-                        <span id="emailError" class="error-message" style="color: red; text-align: right;"></span>
+                        <div class="error-and-title">
+                            <label for="email" class="input-title">Email Address</label>
+                            <div class="email-error error">This field is required</div>
+                        </div>
+                        <input class="inuput-style" type="email" id="email" placeholder="e.g. stephenking@lorem.com">
                     </div>
                     <div class="phone flex">
-                        <label for="" class="input-title">Phone Number</label>
-                        <input class="inuput-style" type="text" placeholder="e.g. +1 234 567 890" id="number">
-                        <span id="errorNumber" style="color: red; text-align: right;"></span>
+                        <div class="error-and-title">
+                            <label for="phone" class="input-title">Phone Number</label>
+                            <div class="phone-error error">This field is required</div>
+                        </div>
+                        <input class="inuput-style" type="tel" id="phone" pattern="[0-9]*"
+                            placeholder="e.g. +1 234 567 890">
                     </div>
                 </div>
 
                 <div class="next-step">
-                    <!-- <a href="./step2.html"><button type="submit">Next Step </button></a> -->
-                    <!-- <a href="./step2.html"><button type="submit">Next Step </button></a> -->
-                    <a class="nextbtn" href="./step2.html">next step</a>
-
+                    <button type="submit">Next Step</button>
                 </div>
             </form>
 
@@ -100,22 +103,104 @@
     </div>
 
 
-    <!-- <script src="./src/js/script.js"></script> -->
+    <script src="./src/js/script.js"></script>
     <script>
-        function validateEmail(inputEmail) {
-            const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-            return emailRegex.test(inputEmail);
+        // function validateEmail(inputEmail) {
+        //     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        //     return emailRegex.test(inputEmail);
+        // }
+
+        // const emailInput = document.getElementById("emailInput");
+        // const emailError = document.getElementById("emailError");
+
+        // emailInput.addEventListener("input", function () {
+        //     const isEmailValid = validateEmail(emailInput.value);
+        //     emailError.textContent = isEmailValid ? "" : "Email is invalid";
+        // });
+
+
+        const nameInput = document.getElementById('name');
+        const nameError = document.querySelector('.name-error');
+        const emailInput = document.getElementById('email');
+        const emailError = document.querySelector('.email-error');
+        const phoneInput = document.getElementById('phone');
+        const phoneError = document.querySelector('.phone-error');
+
+        function isValidEmail(email) {
+            const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+            return emailRegex.test(email);
         }
 
-        const emailInput = document.getElementById("emailInput");
-        const emailError = document.getElementById("emailError");
+        function isValidPhoneNumber(phone) {
+            const phoneRegex = /^\d{10}$/;
+            return phoneRegex.test(phone);
+        }
 
-        emailInput.addEventListener("input", function () {
-            const isEmailValid = validateEmail(emailInput.value);
-            emailInput.classList.toggle("valid", isEmailValid);
-            emailInput.classList.toggle("invalid", !isEmailValid);
-            emailError.textContent = isEmailValid ? "" : "Email is invalid";
-        });
+        nameInput.addEventListener('input', () => {
+            if (nameInput.value.trim() === '') {
+                nameInput.style.border = "1px solid red"
+                nameError.style.display = 'block';
+            } else {
+                nameInput.style.border = "1px solid rgb(240, 237, 237)"
+                nameError.style.display = 'none';
+            }
+        })
+
+        emailInput.addEventListener('input', () => {
+            let isEmailValid = isValidEmail(emailInput.value.trim());
+            if (!isEmailValid) {
+                emailInput.style.border = "1px solid red"
+                emailError.style.display = 'block';
+            } else {
+                emailInput.style.border = "1px solid rgb(240, 237, 237)"
+                emailError.style.display = 'none';
+            }
+        })
+
+        phoneInput.addEventListener('input', () => {
+            let isPhoneValid = isValidPhoneNumber(phoneInput.value.trim());
+            if (!isPhoneValid) {
+                phoneInput.style.border = "1px solid red"
+                phoneError.style.display = 'block';
+            } else {
+                phoneInput.style.border = "1px solid rgb(240, 237, 237)"
+                phoneError.style.display = 'none';
+            }
+        })
+
+        function formSubmit(event) {
+            event.preventDefault();
+            let isValidated = true;
+
+            if (nameInput.value.trim() === '') {
+                nameError.style.display = 'block';
+                isValidated = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+
+            if (emailInput.value.trim() === '') {
+                emailError.style.display = 'block';
+                isValidated = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            if (phoneInput.value.trim() === '') {
+                phoneError.style.display = 'block';
+                isValidated = false;
+            } else {
+                phoneError.style.display = 'none';
+            }
+
+            if (isValidated) {
+                nameInput.value = '';
+                emailInput.value = '';
+                phoneInput.value = '';
+                window.location.href = './step2.html';
+            }
+
+        }
     </script>
 
 </body>

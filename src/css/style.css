@@ -191,7 +191,7 @@ a {
 }
 
 .button-container {
-  height: 28px;
+  height: 27px;
   width: 60px;
   padding: 3px;
   background-color: rgb(32, 32, 46);
@@ -303,4 +303,16 @@ a {
   border-radius: 8px;
   color: white;
   text-transform: capitalize;
+}
+
+.error {
+  margin-bottom: 2px;
+  text-align: end;
+  color: rgb(225, 8, 8);
+  display: none;
+}
+
+.error-and-title {
+  display: flex;
+  justify-content: space-between;
 }

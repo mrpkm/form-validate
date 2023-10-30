@@ -3,9 +3,10 @@
 const circle = document.querySelector('.circle');
 const prices = document.querySelectorAll('.plan-price');
 const tenures = document.querySelectorAll('.tenure');
+const btns = document.querySelector('#btnContainer')
 let isToggled = false;
 
-circle.addEventListener('click', () => {
+btns.addEventListener('click', () => {
     isToggled = !isToggled;
 
     if (isToggled) {
