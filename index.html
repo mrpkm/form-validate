@@ -77,8 +77,9 @@
                     </div>
                     <div class="email flex">
                         <label for="" class="input-title">Email Address</label>
-                        <input class="inuput-style" type="text" placeholder="e.g. stephenking@lorem.com" id="email">
-                        <span id="errorEmail" style="color: red; text-align: right;"></span>
+                        <input class="inuput-style" id="emailInput" type="text" placeholder="e.g. stephenking@lorem.com"
+                            id="email">
+                        <span id="emailError" class="error-message" style="color: red; text-align: right;"></span>
                     </div>
                     <div class="phone flex">
                         <label for="" class="input-title">Phone Number</label>
@@ -98,7 +99,24 @@
         </div>
     </div>
 
-    <script src="./src/js/script.js"></script>
+
+    <!-- <script src="./src/js/script.js"></script> -->
+    <script>
+        function validateEmail(inputEmail) {
+            const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+            return emailRegex.test(inputEmail);
+        }
+
+        const emailInput = document.getElementById("emailInput");
+        const emailError = document.getElementById("emailError");
+
+        emailInput.addEventListener("input", function () {
+            const isEmailValid = validateEmail(emailInput.value);
+            emailInput.classList.toggle("valid", isEmailValid);
+            emailInput.classList.toggle("invalid", !isEmailValid);
+            emailError.textContent = isEmailValid ? "" : "Email is invalid";
+        });
+    </script>
 
 </body>
 
