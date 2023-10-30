@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/meida.css">
+    <title>Multi-step form</title>
+</head>
+
+<body>
+    <div class="step1-container">
+        <div class="personal-information-container">
+            <div class="left">
+                <div class="your-info steps-title">
+                    <div class="steps steps-live">1</div>
+                    <div class="step-container">
+                        <div class="step step1">
+                            STEP 1
+                        </div>
+                        <div class="title">
+                            YOUR INFO
+                        </div>
+                    </div>
+                </div>
+                <div class="select-plan steps-title">
+                    <div class="steps">2</div>
+                    <div class="step-container">
+                        <div class="step step1">
+                            STEP 2
+                        </div>
+                        <div class="title">
+                            SELECT PLAN
+                        </div>
+                    </div>
+                </div>
+                <div class="add-on steps-title">
+                    <div class="steps">3</div>
+                    <div class="step-container">
+                        <div class="step step1">
+                            STEP 3
+                        </div>
+                        <div class="title">
+                            ADD-ONS
+                        </div>
+                    </div>
+                </div>
+                <div class="summary steps-title">
+                    <div class="steps">4</div>
+                    <div class="step-container">
+                        <div class="step step1">
+                            STEP 4
+                        </div>
+                        <div class="title">
+                            SUMMARY
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="right" onsubmit="validateForm(event)">
+                <div class="form-container">
+                    <div class="title-container">
+                        <div class="title">
+                            Personal info
+                        </div>
+                        <div class="sub-title">
+                            Please provide your name, email address, and phone number.
+                        </div>
+                    </div>
+
+                    <div class="name flex">
+                        <label for="" class="input-title">Name</label>
+                        <input class="inuput-style" type="text" placeholder="e.g. Stephen King" id="name">
+                        <span id="errorText" style="color: red; text-align:right;"></span>
+                    </div>
+                    <div class="email flex">
+                        <label for="" class="input-title">Email Address</label>
+                        <input class="inuput-style" type="text" placeholder="e.g. stephenking@lorem.com" id="email">
+                        <span id="errorEmail" style="color: red; text-align: right;"></span>
+                    </div>
+                    <div class="phone flex">
+                        <label for="" class="input-title">Phone Number</label>
+                        <input class="inuput-style" type="text" placeholder="e.g. +1 234 567 890" id="number">
+                        <span id="errorNumber" style="color: red; text-align: right;"></span>
+                    </div>
+                </div>
+
+                <div class="next-step">
+                    <!-- <a href="./step2.html"><button type="submit">Next Step </button></a> -->
+                    <!-- <a href="./step2.html"><button type="submit">Next Step </button></a> -->
+                    <a class="nextbtn" href="./step2.html">next step</a>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="./src/js/script.js"></script>
+
+</body>
+
+</html>
