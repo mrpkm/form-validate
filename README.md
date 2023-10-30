@@ -1,2 +1,2 @@
 # form-validate
-URL LINK : https://mrpkm.github.io/form-validate/
+URL LINK :   https://form-validate-omega.vercel.app/
